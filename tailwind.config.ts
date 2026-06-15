@@ -8,14 +8,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Palette premium "bâtiment & décoration" : tons chauds + laiton
+        // Charte MG CERVIS : bleu marine + orange
         brand: {
-          DEFAULT: "#9a6a3c", // laiton / terre
-          dark: "#7c5430",
-          light: "#c79a6b",
+          DEFAULT: "#f7941d", // orange MG
+          dark: "#d97d0a",
+          light: "#ffb44d",
+        },
+        navy: {
+          DEFAULT: "#14305f", // bleu marine MG
+          dark: "#0e2347",
+          light: "#1d4380",
         },
         ink: {
-          DEFAULT: "#1c1917", // stone-900
+          DEFAULT: "#1c1917", // stone-900 (texte)
           soft: "#44403c", // stone-700
         },
         cream: "#faf7f2",

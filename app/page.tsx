@@ -86,6 +86,42 @@ const REASONS = [
 export default function HomePage() {
   return (
     <main className="overflow-x-hidden">
+      {/* ============ HEADER ============ */}
+      <header className="sticky top-0 z-50 border-b border-navy/10 bg-white/90 backdrop-blur">
+        <div className="container-section flex h-16 items-center justify-between">
+          <a href="#" className="flex items-center gap-2.5">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-serif text-lg font-extrabold text-navy">
+              MG
+            </span>
+            <span className="leading-tight">
+              <span className="block font-serif text-lg font-bold text-navy">
+                MG CERVIS
+              </span>
+              <span className="block text-[10px] uppercase tracking-widest text-brand">
+                Aménagement & Finitions
+              </span>
+            </span>
+          </a>
+
+          <nav className="hidden items-center gap-8 text-sm font-medium text-ink-soft md:flex">
+            <a href="#realisations" className="transition hover:text-navy">
+              Réalisations
+            </a>
+            <a href="#devis" className="transition hover:text-navy">
+              Devis
+            </a>
+          </nav>
+
+          <a
+            href="#devis"
+            className="inline-flex items-center gap-2 rounded-lg bg-navy px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-light"
+          >
+            Devis gratuit
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </header>
+
       {/* ============ HERO ============ */}
       <section className="relative isolate">
         {/* Image de fond */}
@@ -97,7 +133,7 @@ export default function HomePage() {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/70 to-ink/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/95 via-navy/85 to-navy-dark/95" />
         </div>
 
         <div className="container-section flex min-h-[88vh] flex-col justify-center py-24 text-white">
@@ -121,7 +157,7 @@ export default function HomePage() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#devis"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-7 py-4 font-semibold text-white shadow-xl shadow-brand/30 transition hover:bg-brand-dark"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-7 py-4 font-bold text-navy shadow-xl shadow-brand/30 transition hover:bg-brand-light"
               >
                 Demander mon devis gratuit
                 <ArrowRight className="h-5 w-5" />
@@ -185,7 +221,7 @@ export default function HomePage() {
             <Reveal delay={REALISATIONS.length * 0.08}>
               <a
                 href="#devis"
-                className="flex h-full min-h-[19rem] flex-col items-center justify-center gap-3 rounded-2xl bg-ink p-6 text-center text-white transition hover:bg-ink-soft"
+                className="flex h-full min-h-[19rem] flex-col items-center justify-center gap-3 rounded-2xl bg-navy p-6 text-center text-white transition hover:bg-navy-light"
               >
                 <span className="font-serif text-2xl font-bold">
                   Un projet en tête ?
@@ -193,7 +229,7 @@ export default function HomePage() {
                 <p className="text-sm text-stone-300">
                   Parlons-en. Recevez une estimation personnalisée et gratuite.
                 </p>
-                <span className="mt-2 inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 font-semibold">
+                <span className="mt-2 inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 font-bold text-navy">
                   Démarrer
                   <ArrowRight className="h-4 w-4" />
                 </span>
@@ -236,7 +272,7 @@ export default function HomePage() {
       </section>
 
       {/* ============ FORMULAIRE DE CAPTURE ============ */}
-      <section id="devis" className="bg-ink py-20 sm:py-28">
+      <section id="devis" className="bg-navy py-20 sm:py-28">
         <div className="container-section">
           <div className="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-2">
             <Reveal className="text-white">
@@ -258,7 +294,7 @@ export default function HomePage() {
                   "Tarification claire et transparente",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-bold text-white">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-bold text-navy">
                       ✓
                     </span>
                     {item}
@@ -283,20 +319,20 @@ export default function HomePage() {
       </section>
 
       {/* ============ FOOTER ============ */}
-      <footer className="bg-[#14305f] text-sm text-blue-100/80">
+      <footer className="bg-navy text-sm text-blue-100/80">
         <div className="container-section py-14">
           <div className="grid gap-10 md:grid-cols-3">
             {/* Marque */}
             <div>
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f7941d] font-serif text-xl font-extrabold text-[#14305f]">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand font-serif text-xl font-extrabold text-navy">
                   MG
                 </span>
                 <div className="leading-tight">
                   <p className="font-serif text-xl font-bold text-white">
                     MG CERVIS
                   </p>
-                  <p className="text-xs uppercase tracking-widest text-[#f7941d]">
+                  <p className="text-xs uppercase tracking-widest text-brand">
                     Aménagement & Finitions
                   </p>
                 </div>
@@ -309,7 +345,7 @@ export default function HomePage() {
 
             {/* Contact */}
             <div>
-              <h3 className="mb-4 font-semibold uppercase tracking-widest text-[#f7941d]">
+              <h3 className="mb-4 font-semibold uppercase tracking-widest text-brand">
                 Contact
               </h3>
               <p className="mb-3 text-white">
@@ -328,7 +364,7 @@ export default function HomePage() {
                       href={`tel:${tel.replace(/\s/g, "")}`}
                       className="flex items-center gap-2.5 transition hover:text-white"
                     >
-                      <Phone className="h-4 w-4 shrink-0 text-[#f7941d]" />
+                      <Phone className="h-4 w-4 shrink-0 text-brand" />
                       {tel}
                     </a>
                   </li>
@@ -338,7 +374,7 @@ export default function HomePage() {
 
             {/* Coordonnées */}
             <div>
-              <h3 className="mb-4 font-semibold uppercase tracking-widest text-[#f7941d]">
+              <h3 className="mb-4 font-semibold uppercase tracking-widest text-brand">
                 Nous trouver
               </h3>
               <ul className="space-y-3">
@@ -347,18 +383,18 @@ export default function HomePage() {
                     href="mailto:gouhamarcelino@gmail.com"
                     className="flex items-center gap-2.5 transition hover:text-white"
                   >
-                    <Mail className="h-4 w-4 shrink-0 text-[#f7941d]" />
+                    <Mail className="h-4 w-4 shrink-0 text-brand" />
                     gouhamarcelino@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <MapPin className="h-4 w-4 shrink-0 text-[#f7941d]" />
+                  <MapPin className="h-4 w-4 shrink-0 text-brand" />
                   Abidjan, Côte d&apos;Ivoire
                 </li>
               </ul>
               <a
                 href="#devis"
-                className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#f7941d] px-5 py-2.5 font-semibold text-[#14305f] transition hover:bg-[#ffa736]"
+                className="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 font-semibold text-navy transition hover:bg-brand-light"
               >
                 Demander un devis
                 <ArrowRight className="h-4 w-4" />

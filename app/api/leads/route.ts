@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabase";
 
 /**
  * Route Handler pour la réception des prospects (leads).
@@ -7,8 +8,7 @@ import { NextResponse } from "next/server";
  * Corps attendu (JSON) :
  *   { firstName: string, email: string, service: string }
  *
- * 👉 PROCHAINE ÉTAPE : brancher une base de données (Supabase, PostgreSQL…)
- *    à l'endroit indiqué plus bas. Pour l'instant, on valide et on logue.
+ * Les leads validés sont enregistrés dans la table `leads` de Supabase.
  */
 
 // Valeurs de service autorisées (alignées sur lib/services.ts)
@@ -61,39 +61,23 @@ export async function POST(request: Request) {
       );
     }
 
-    const lead = {
-      firstName,
-      email,
-      service,
-      createdAt: new Date().toISOString(),
-    };
+    // --- Enregistrement en base (Supabase) ---
+    const { error } = await supabaseAdmin
+      .from("leads")
+      .insert({ first_name: firstName, email, service });
 
-    // ------------------------------------------------------------------
-    // 🔌 BRANCHEMENT BASE DE DONNÉES — à compléter
-    // ------------------------------------------------------------------
-    // Exemple avec Supabase :
-    //
-    //   import { createClient } from "@supabase/supabase-js";
-    //   const supabase = createClient(
-    //     process.env.SUPABASE_URL!,
-    //     process.env.SUPABASE_SERVICE_ROLE_KEY!
-    //   );
-    //   const { error } = await supabase.from("leads").insert(lead);
-    //   if (error) throw error;
-    //
-    // Exemple avec PostgreSQL (node-postgres) :
-    //
-    //   await pool.query(
-    //     "INSERT INTO leads (first_name, email, service, created_at) VALUES ($1,$2,$3,$4)",
-    //     [lead.firstName, lead.email, lead.service, lead.createdAt]
-    //   );
-    //
-    // 💡 Optionnel : envoyer un email de notification interne (Resend, etc.)
-    //    et/ou un email de bienvenue au prospect ici.
-    // ------------------------------------------------------------------
+    if (error) {
+      console.error("Erreur insertion Supabase /api/leads :", error);
+      return NextResponse.json(
+        { error: "Erreur serveur. Merci de réessayer plus tard." },
+        { status: 500 }
+      );
+    }
 
-    // Pour l'instant : log serveur (visible dans la console de dev / Vercel)
-    console.log("📩 Nouveau lead reçu :", lead);
+    console.log("📩 Nouveau lead enregistré :", { firstName, email, service });
+
+    // 💡 Optionnel (étape suivante) : email de notification interne + email
+    //    de bienvenue au prospect via Resend.
 
     return NextResponse.json(
       { success: true, message: "Lead enregistré." },

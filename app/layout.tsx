@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Aménagement & Finitions sur mesure | Moquettes, Stores, Gazon & plus",
+  title: "MG CERVIS — Aménagement & Finitions | Moquettes, Stores, Gazon & plus",
   description:
     "Spécialiste de l'aménagement et de la finition d'espaces : moquettes, habillages muraux, stores, gazons synthétiques et rideaux. Demandez votre devis gratuit.",
   openGraph: {
