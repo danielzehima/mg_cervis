@@ -339,7 +339,7 @@ export default function HomePage() {
               </div>
               <p className="mt-5 max-w-xs text-blue-100/70">
                 Revêtement sol · Revêtement mur · Fabrication de store ·
-                Confection de rideaux.
+                Confection de rideaux-Founiture et pose d'aluminium pour les fenêtres et les portes. Nous transformons vos espaces avec des finitions d'exception.
               </p>
             </div>
 
