@@ -3,6 +3,7 @@ import {
   ArrowRight,
   Award,
   CalendarCheck,
+  Facebook,
   Mail,
   MapPin,
   PencilRuler,
@@ -341,6 +342,15 @@ export default function HomePage() {
                 Revêtement sol · Revêtement mur · Fabrication de store ·
                 Confection de rideaux-Founiture et pose d'aluminium pour les fenêtres et les portes. Nous transformons vos espaces avec des finitions d'exception.
               </p>
+              <a
+                href="https://www.facebook.com/profile.php?id=61562187385515"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Suivez MG CERVIS sur Facebook"
+                className="mt-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-brand hover:text-navy"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
             </div>
 
             {/* Contact */}
