@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase";
+import { sendLeadEmails } from "@/lib/email";
 
 /**
  * Route Handler pour la réception des prospects (leads).
@@ -62,7 +63,7 @@ export async function POST(request: Request) {
     }
 
     // --- Enregistrement en base (Supabase) ---
-    const { error } = await supabaseAdmin
+    const { error } = await getSupabaseAdmin()
       .from("leads")
       .insert({ first_name: firstName, email, service });
 
@@ -76,8 +77,9 @@ export async function POST(request: Request) {
 
     console.log("📩 Nouveau lead enregistré :", { firstName, email, service });
 
-    // 💡 Optionnel (étape suivante) : email de notification interne + email
-    //    de bienvenue au prospect via Resend.
+    // Emails best-effort (n'échoue jamais la requête) : notification interne
+    // + accusé de réception au prospect.
+    await sendLeadEmails({ firstName, email, service });
 
     return NextResponse.json(
       { success: true, message: "Lead enregistré." },
